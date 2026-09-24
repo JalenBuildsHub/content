@@ -14,7 +14,7 @@ If an element can be focused using the keyboard, then it should be interactive; 
 > [!NOTE]
 > One important exception to this rule is if the element has `role="document"` applied to it, **inside** an interactive context (such as `role="application"`). In such a case, focusing the nested document is the only way of returning assistive technology to a non-interactive state (often called "browse mode").
 
-Most interactive elements are focusable by default; you can make an element focusable by adding a `tabindex=0` attribute value to it. However, you should only add `tabindex` if you have also made the element interactive, for example, by defining appropriate event handlers keyboard events.
+Most native interactive elements are focusable by default. Prefer native elements such as {{HTMLElement("button")}} and links with an `href`, because they provide keyboard behavior and semantics without requiring custom key handlers. If you make a non-interactive element focusable with `tabindex="0"`, you must also implement the expected interaction for keyboard users. Do not rely on `keydown` or `keyup` as the only path to an action; assistive technologies can activate controls by dispatching a `click` event.
 
 ### See also
 
@@ -38,7 +38,7 @@ This creates confusion for keyboard-only users when the focus order differs from
 
 If an element can be clicked with a pointing device, such as a mouse, then it should also be focusable using the keyboard, and the user should be able to do something by interacting with it.
 
-An element is clickable if it has an `onclick` event handler defined. You can make it focusable by adding a `tabindex=0` attribute value to it. You can make it operable with the keyboard by defining an `onkeydown` event handler; in most cases, the action taken by event handler should be the same for both types of events.
+When possible, use a native interactive element for clickable controls. If you create a custom control, make it focusable and implement the expected keyboard interaction. Route activation through the same action for pointer, keyboard, and assistive technology input. Keep a `click` handler for activation controls because assistive technologies may synthesize `click` events when users activate them from the keyboard.
 
 ### See also
 
@@ -48,7 +48,7 @@ An element is clickable if it has an `onclick` event handler defined. You can ma
 
 ## Interactive elements must be able to be activated using a keyboard
 
-If the user can interact with an element using touch or a pointing device, then the element should also support interacting using the keyboard. That is, if you have defined event handlers for touch or click events, you should also define them for keyboard events. The keyboard event handlers should enable effectively the same interaction as the touch or click handlers.
+If the user can interact with an element using touch or a pointing device, then the same functionality should also be operable using a keyboard. Prefer native interactive elements, which already implement the expected keyboard activation behavior. For custom controls, implement the appropriate keyboard commands in addition to pointer activation, but do not depend on `keydown` or `keyup` as the only activation path because assistive technologies may synthesize `click` events.
 
 ### See also
 
