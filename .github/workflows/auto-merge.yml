@@ -9,6 +9,6 @@ permissions:
 jobs:
   auto-merge:
     if: github.repository_owner == 'mdn'
-    uses: mdn/workflows/.github/workflows/auto-merge.yml@main
+    uses: mdn/workflows/.github/workflows/auto-merge.yml@dd85d03f103d3d23f8def99e8ade7f3be066db51 # mdn/workflows main @ 2026-10-05
     secrets:
       GH_TOKEN: ${{ secrets.AUTOMERGE_TOKEN }}
