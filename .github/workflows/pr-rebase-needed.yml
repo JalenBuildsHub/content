@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   labeler:
-    uses: mdn/workflows/.github/workflows/pr-rebase-needed.yml@main
+    uses: mdn/workflows/.github/workflows/pr-rebase-needed.yml@dd85d03f103d3d23f8def99e8ade7f3be066db51 # mdn/workflows main @ 2026-10-05
     with:
       target-repo: "mdn/content"
     secrets:
